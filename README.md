@@ -1,0 +1,2 @@
+# AutoConfigurator
+School project
