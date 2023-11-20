@@ -1,0 +1,115 @@
+﻿<Window x:Name="Window" x:Class="AutoConfigurator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutoConfigurator"
+        mc:Ignorable="d"
+        Title="Audi autókonfigurátor" Height="650" Width="1400" MaxWidth="1400" MaxHeight="650" WindowStartupLocation="CenterScreen" SizeChanged="Window_SizeChanged" WindowStyle="None" AllowsTransparency="True" Background="Transparent">
+    <WindowChrome.WindowChrome>
+        <WindowChrome GlassFrameThickness="0,0,0,1" CornerRadius="0" />
+    </WindowChrome.WindowChrome>
+    <Window.Clip>
+        <RectangleGeometry Rect="0,0,1400,650" RadiusX="25" RadiusY="25"/>
+    </Window.Clip>
+    <Window.Resources>
+        <Storyboard x:Key="PlaySoundStoryboard">
+            <MediaTimeline Storyboard.TargetName="myMediaElement" Source=".\Szinek\SzinekKép\anyub.wav"  />
+        </Storyboard>
+    </Window.Resources>
+    <ScrollViewer VerticalScrollBarVisibility="Auto" CanContentScroll="True">
+
+
+        <!--Background-->
+        <Grid Background="Silver" >
+
+
+            <!--Audi Logo-->
+            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom" x:Name="logo">
+                <Image HorizontalAlignment="Left" Height="150" Margin="1199,512,-29,-13" VerticalAlignment="Top" Width="228" >
+                    <Image.Source>
+                        <BitmapImage DecodePixelWidth="200" UriSource="audilogo.png" />
+                    </Image.Source>
+                </Image>
+
+            </StackPanel>
+            <WrapPanel Margin="0,0,0,-150">
+
+                <!--Title-->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1007*"/>
+                        <ColumnDefinition Width="385*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label HorizontalContentAlignment="Center" Width="1376" HorizontalAlignment="Center" FontSize="40" FontFamily="/AutoConfigurator;component/#Audi Type Extended" Margin="10,29,-5,39" Grid.ColumnSpan="2" FontWeight="Bold" >
+                        <TextBlock Width="448" Height="72" FontSize="48" RenderTransformOrigin="0.5,0.5">
+                            <TextBlock.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform AngleY="0.168"/>
+                                    <RotateTransform/>
+                                    <TranslateTransform Y="0.639"/>
+                                </TransformGroup>
+                            </TextBlock.RenderTransform>Autó választás</TextBlock>
+                    </Label>
+                    <Image HorizontalAlignment="Right" Height="39"  VerticalAlignment="Top" Width="40" Margin="0,10,15,0" Grid.Column="1">
+                        <Image.Source>
+                            <BitmapImage DecodePixelWidth="200" UriSource="close.png" />
+                        </Image.Source>
+                    </Image>
+                    <Button x:Name="Kilépés" Content="Kilépés" HorizontalAlignment="Right"  VerticalAlignment="Top" Width="40" Height="39" Opacity="0" Click="Kilépés_Click" Margin="0,10,15,0" Grid.Column="1"/>
+                </Grid>
+
+                <!--A5-->
+                <Grid Width="460">
+                    <Border BorderBrush="Black" BorderThickness="1" Height="256" Width="450" Background="#6b8230" >
+                        <Label Content="A5 modell (3)"  FontSize="35" FontFamily="/AutoConfigurator;component/#Audi Type Extended" Margin="79,0,66,0"/>
+                    </Border>
+
+                    <Image Height="220" Width="420">
+                        <Image.Source>
+                            <BitmapImage DecodePixelWidth="300" UriSource=".\Tipusok\Képek\A5alap.png" />
+                        </Image.Source>
+                    </Image>
+                    <Button x:Name="választ1" Opacity="0" Content="Kiválaszt" Click="Választ1_Click"  RenderTransformOrigin="0.21,1.807" FontSize="35" FontFamily="Lucida Sans Unicode" Background="White"/>
+                </Grid>
+
+                <!--R8-->
+                <Grid Width="460">
+                    <Border BorderBrush="Black" BorderThickness="1" Height="256" Width="450" Background="#911919">
+                        <Label Content="R8 modell (2)" HorizontalAlignment="Center" FontSize="35" Width="311" FontFamily="/AutoConfigurator;component/#Audi Type Extended" Margin="88,0,49,0"/>
+                    </Border>
+
+                    <Image Height="220" Width="423" >
+                        <Image.Source>
+                            <BitmapImage DecodePixelWidth="300" UriSource=".\Tipusok\Képek\r8alap.png" />
+                        </Image.Source>
+                    </Image>
+
+                    <Button x:Name="választ2" Opacity="0" Content="Kiválaszt" Click="Választ2_Click" RenderTransformOrigin="0.21,1.807" FontSize="35" FontFamily="Lucida Sans Unicode" Background="White"/>
+                </Grid>
+
+                <!--Q3-->
+                <Grid Width="460">
+                    <Border BorderBrush="Black" BorderThickness="1" Height="256"  Width="450" Background="#8a6d1d">
+                        <Label Content="Q3 modell (2)" FontSize="35" FontFamily="/AutoConfigurator;component/#Audi Type Extended" Margin="103,0,42,0"/>
+                    </Border>
+
+                    <Image HorizontalAlignment="Right" Height="220"  Width="423">
+                        <Image.Source>
+                            <BitmapImage DecodePixelWidth="300" UriSource=".\Tipusok\Képek\q3alap.png" />
+                        </Image.Source>
+                    </Image>
+
+                    <Button x:Name="választ3" Opacity="0" Content="Kiválaszt" Click="Választ3_Click" RenderTransformOrigin="0.21,1.807" FontSize="35" FontFamily="Lucida Sans Unicode" Background="White"/>
+
+                </Grid>
+
+
+               
+
+
+            </WrapPanel>
+        </Grid>
+    </ScrollViewer>
+</Window>

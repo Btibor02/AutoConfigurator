@@ -1,0 +1,187 @@
+﻿<Window x:Class="AutoConfigurator.Színválasztó"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutoConfigurator"
+        mc:Ignorable="d"
+         Title="Színválasztás A5" Height="650" Width="1400"  MaxWidth="1400" MaxHeight="650" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" Background="Transparent">
+    <WindowChrome.WindowChrome>
+        <WindowChrome GlassFrameThickness="0,0,0,1" CornerRadius="0" />
+    </WindowChrome.WindowChrome>
+    <Window.Clip>
+        <RectangleGeometry Rect="0,0,1400,650" RadiusX="25" RadiusY="25"/>
+    </Window.Clip>
+    <Window.Resources>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="RadioButton.Static.Background" Color="#FFFFFFFF"/>
+        <SolidColorBrush x:Key="RadioButton.Static.Border" Color="#FF707070"/>
+        <Style x:Key="OptionMarkFocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="14,0,0,0" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="RadioButton.MouseOver.Background" Color="#FFF3F9FF"/>
+        <SolidColorBrush x:Key="RadioButton.MouseOver.Border" Color="#FF5593FF"/>
+        <SolidColorBrush x:Key="RadioButton.MouseOver.Glyph" Color="#FF212121"/>
+        <SolidColorBrush x:Key="RadioButton.Disabled.Background" Color="#FFE6E6E6"/>
+        <SolidColorBrush x:Key="RadioButton.Disabled.Border" Color="#FFBCBCBC"/>
+        <SolidColorBrush x:Key="RadioButton.Disabled.Glyph" Color="#FF707070"/>
+        <SolidColorBrush x:Key="RadioButton.Pressed.Background" Color="#FFD9ECFF"/>
+        <SolidColorBrush x:Key="RadioButton.Pressed.Border" Color="#FF3C77DD"/>
+        <SolidColorBrush x:Key="RadioButton.Pressed.Glyph" Color="#FF212121"/>
+        <SolidColorBrush x:Key="RadioButton.Static.Glyph" Color="#FF212121"/>
+        <Style TargetType="{x:Type RadioButton}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource RadioButton.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource RadioButton.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RadioButton}">
+                        <Grid x:Name="templateRoot" Background="Transparent" SnapsToDevicePixels="True">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border x:Name="radioButtonBorder" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="100" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="1,1,0,0" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Grid.ColumnSpan="2" Height="29" Width="29">
+                                <Grid x:Name="markGrid" Margin="2">
+                                    <Ellipse x:Name="optionMark" Fill="{StaticResource RadioButton.Static.Glyph}" MinWidth="6" MinHeight="6" Opacity="0"/>
+                                </Grid>
+                            </Border>
+                            <ContentPresenter x:Name="contentPresenter" Grid.Column="1" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="35,0,0,0" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="HasContent" Value="true">
+                                <Setter Property="FocusVisualStyle" Value="{StaticResource OptionMarkFocusVisual}"/>
+                                <Setter Property="Padding" Value="4,-1,0,0"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="radioButtonBorder" Value="{StaticResource RadioButton.MouseOver.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="radioButtonBorder" Value="{StaticResource RadioButton.MouseOver.Border}"/>
+                                <Setter Property="Fill" TargetName="optionMark" Value="{StaticResource RadioButton.MouseOver.Glyph}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="radioButtonBorder" Value="{StaticResource RadioButton.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="radioButtonBorder" Value="{StaticResource RadioButton.Disabled.Border}"/>
+                                <Setter Property="Fill" TargetName="optionMark" Value="{StaticResource RadioButton.Disabled.Glyph}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="radioButtonBorder" Value="{StaticResource RadioButton.Pressed.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="radioButtonBorder" Value="{StaticResource RadioButton.Pressed.Border}"/>
+                                <Setter Property="Fill" TargetName="optionMark" Value="{StaticResource RadioButton.Pressed.Glyph}"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="true">
+                                <Setter Property="Opacity" TargetName="optionMark" Value="1"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="{x:Null}">
+                                <Setter Property="Opacity" TargetName="optionMark" Value="0.56"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid Background="Silver">
+        <Label x:Name="autóNeve" HorizontalContentAlignment="Center" VerticalAlignment="Top" Height="69" Width="655" FontSize="48" Margin="432,8,313,0" FontFamily="/AutoConfigurator;component/#Audi Type Extended" FontWeight="Bold">
+            <TextBlock TextDecorations="Underline" Width="645"></TextBlock>
+        </Label>
+
+        <Image HorizontalAlignment="Right" Height="39"  VerticalAlignment="Top" Width="40" Margin="0,10,15,0">
+            <Image.Source>
+                <BitmapImage DecodePixelWidth="200" UriSource="close.png" />
+            </Image.Source>
+        </Image>
+        <Button x:Name="Kilépés" Content="Kilépés" HorizontalAlignment="Right"  VerticalAlignment="Top" Width="40" Height="39" Opacity="0" Click="Kilépés_Click" Margin="0,10,15,0"/>
+
+        <Image HorizontalAlignment="Left" Height="150" Margin="1199,512,-29,-13" VerticalAlignment="Top" Width="228" >
+            <Image.Source>
+                <BitmapImage DecodePixelWidth="200" UriSource="audilogo.png" />
+            </Image.Source>
+        </Image>
+        <WrapPanel Margin="-10,82,10,143" Orientation="Vertical">
+            <RadioButton x:Name="Fekete" Content="Fekete" HorizontalAlignment="Left" Margin="60,10,80,0" VerticalAlignment="Top" Height="39" Width="151" FontFamily="/AutoConfigurator;component/#Audi Type Extended" FontSize="25" IsChecked="True" Click="Fekete_Click" Checked="Fekete_Checked"  />
+            <RadioButton x:Name="Piros" Content="Piros" HorizontalAlignment="Left" Margin="60,120,80,0" VerticalAlignment="Top" Height="39" Width="151" FontFamily="/AutoConfigurator;component/#Audi Type Extended" FontSize="25" IsChecked="False" Click="Piros_Click" Checked="Piros_Checked" />
+            <RadioButton x:Name="Kék" Content="Kék" HorizontalAlignment="Left" Margin="60,120,80,0" VerticalAlignment="Top" Height="39" Width="151" FontFamily="/AutoConfigurator;component/#Audi Type Extended" FontSize="25" IsChecked="False" Click="Kék_Click" Checked="Kék_Checked"/>
+        </WrapPanel>
+
+        <StackPanel Margin="0,604,1020,0" Background="White" Orientation="Horizontal" Height="46" Width="380">
+            <Label Content="Végösszeg:" HorizontalAlignment="Left" Margin="0,0,0,-5" VerticalAlignment="Top" Height="46" Width="170" FontFamily="/AutoConfigurator;component/#Audi Type Extended" FontSize="23"/>
+            <Label x:Name="végösszegki" HorizontalAlignment="Left" Margin="0,0,0,-5" VerticalAlignment="Top" Height="46" Width="210" FontFamily="/AutoConfigurator;component/#Audi Type Extended" FontSize="23"/>
+        </StackPanel>
+
+        <!--Fekete-->
+        <Image HorizontalAlignment="Left" Height="103" Margin="44,134,0,0" VerticalAlignment="Top" Width="179">
+            <Image.Source>
+                <BitmapImage DecodePixelWidth="200" UriSource="/Szinek/SzinekKép/A5feketeszin.png" />
+            </Image.Source>
+        </Image>
+
+        <!--Piros-->
+        <Image HorizontalAlignment="Left" Height="103" Margin="44,293,0,0" VerticalAlignment="Top" Width="179">
+            <Image.Source>
+                <BitmapImage DecodePixelWidth="200" UriSource="/Szinek/SzinekKép/A5pirosszin.png" />
+            </Image.Source>
+        </Image>
+
+        <!--Kék-->
+        <Image HorizontalAlignment="Left" Height="103" Margin="44,465,0,0" VerticalAlignment="Top" Width="179">
+            <Image.Source>
+                <BitmapImage DecodePixelWidth="200" UriSource="/Szinek/SzinekKép/A5kékszin.png" />
+            </Image.Source>
+        </Image>
+
+
+        <!--Autó-->
+        <Image x:Name="autóKép" HorizontalAlignment="Left" Height="520" Margin="396,79,-340,0" VerticalAlignment="Top" Width="1336"  />
+
+
+
+        <Image Margin="519,560,771,5" RenderTransformOrigin="0.5,0.5">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+            <Image.Source>
+                <BitmapImage DecodePixelWidth="300" UriSource="nyil.png" />
+            </Image.Source>
+        </Image>
+
+
+        <Button x:Name="Vissza" Content="Vissza" HorizontalAlignment="Left" VerticalAlignment="Top" Width="43" Margin="550,581,0,0" Height="59" FontFamily="Lucida Sans Unicode" FontSize="35" Background="White" Click="Vissza_Click" Opacity="0"/>
+
+        <Image Margin="760,560,530,5" RenderTransformOrigin="0.5,0.5">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+            <Image.Source>
+                <BitmapImage DecodePixelWidth="300" UriSource="nyil.png" />
+            </Image.Source>
+        </Image>
+
+        <Button x:Name="Tovább" Content="Kész" Click="TovábbKész_Click" HorizontalAlignment="Left" Margin="788,581,0,0"  VerticalAlignment="Top" Width="53" FontFamily="Lucida Sans Unicode" Background="White" Height="48" FontSize="35" Opacity="0"/>
+    </Grid>
+</Window>

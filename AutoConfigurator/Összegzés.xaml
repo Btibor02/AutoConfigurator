@@ -1,0 +1,119 @@
+﻿<Window x:Class="AutoConfigurator.Összegzés"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutoConfigurator"
+        mc:Ignorable="d"
+        Title="Összegzés" Height="650" Width="1400"  MaxWidth="1400" MaxHeight="650" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" Background="Transparent">
+    <WindowChrome.WindowChrome>
+        <WindowChrome GlassFrameThickness="0,0,0,1" CornerRadius="0" />
+    </WindowChrome.WindowChrome>
+    <Window.Clip>
+        <RectangleGeometry Rect="0,0,1400,650" RadiusX="25" RadiusY="25"/>
+    </Window.Clip>
+    <Grid>
+        <Grid Margin="0,0,2,1" Background="Silver">
+            <Image HorizontalAlignment="Left" Height="150" Margin="1199,512,-29,-13" VerticalAlignment="Top" Width="228" >
+                <Image.Source>
+                    <BitmapImage DecodePixelWidth="200" UriSource="audilogo.png" />
+                </Image.Source>
+            </Image>
+            <Label Content="Az Ön Konfigurációja" HorizontalAlignment="Left" VerticalAlignment="Top" Height="69" Width="530" FontSize="40" Margin="0,5,0,0" FontFamily="/AutoConfigurator;component/#Audi Type Extended" FontWeight="Bold"/>
+
+            <Image HorizontalAlignment="Right" Height="39" Margin="0,12,15,0" VerticalAlignment="Top" Width="40" >
+                <Image.Source>
+                    <BitmapImage DecodePixelWidth="200" UriSource="close.png" />
+                </Image.Source>
+            </Image>
+
+            <!--Technikai-->
+
+            <Label Content="Technikai adatok:" HorizontalAlignment="Left" Margin="10,104,0,0" VerticalAlignment="Top" FontSize="25" FontFamily="/AutoConfigurator;component/#Audi Type Extended" />
+
+            <Label Content="Meghajtás:" HorizontalAlignment="Left" Margin="41,154,0,0" VerticalAlignment="Top" Height="51" Width="187" FontFamily="/AutoConfigurator;component/#Audi Type Extended" FontSize="26"/>
+            <Label x:Name="meghajtás" Content="empty" HorizontalAlignment="Left" Margin="228,155,0,0" VerticalAlignment="Top" FontSize="25" FontFamily="/AutoConfigurator;component/#Audi Type Extended"/>
+
+            <Label Content="Váltó:" HorizontalAlignment="Left" Margin="41,210,0,0" VerticalAlignment="Top" Height="51" Width="167" FontFamily="/AutoConfigurator;component/#Audi Type Extended" FontSize="25"/>
+            <Label x:Name="váltó" Content="empty" HorizontalAlignment="Left" Margin="228,210,0,0" VerticalAlignment="Top" FontSize="25" FontFamily="/AutoConfigurator;component/#Audi Type Extended"/>
+
+            <Label Content="Üzemanyag:" HorizontalAlignment="Left" Margin="41,261,0,0" VerticalAlignment="Top" Height="51" Width="202" FontFamily="/AutoConfigurator;component/#Audi Type Extended" FontSize="25"/>
+            <Label x:Name="üzemanyag" Content="empty" HorizontalAlignment="Left" Margin="228,261,0,0" VerticalAlignment="Top" FontSize="25" FontFamily="/AutoConfigurator;component/#Audi Type Extended"/>
+
+            <Label Content="Motor:" HorizontalAlignment="Left" Margin="41,312,0,0" VerticalAlignment="Top" Height="51" Width="187" FontFamily="/AutoConfigurator;component/#Audi Type Extended" FontSize="25"/>
+            <Label x:Name="motor" Content="empty" HorizontalAlignment="Left" Margin="228,312,0,0" VerticalAlignment="Top" FontSize="25" FontFamily="/AutoConfigurator;component/#Audi Type Extended"/>
+            <Image x:Name="motorkép" HorizontalAlignment="Left" Height="158" Margin="92,368,0,0" VerticalAlignment="Top" Width="212"/>
+
+            <!--Extrák-->
+
+            <StackPanel Margin="487,570,483,20" Orientation="Horizontal">
+                <Label Content="Végösszeg:" HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" Width="180" FontFamily="/AutoConfigurator;component/#Audi Type Extended" FontSize="25" Foreground="#ed3237" FontWeight="Bold"/>
+                <Label x:Name="végösszegki" HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" Width="240" FontFamily="/AutoConfigurator;component/#Audi Type Extended" FontSize="25"/>
+            </StackPanel>
+            <Label Content="Extrák:" HorizontalAlignment="Left" Margin="550,96,0,0" VerticalAlignment="Top" FontSize="30" FontFamily="/AutoConfigurator;component/#Audi Type Extended"/>
+            <Label x:Name="extrák" Content="empty" HorizontalAlignment="Left" Margin="687,66,0,0" VerticalAlignment="Top" FontSize="25" RenderTransformOrigin="0.502,0.163" FontFamily="/AutoConfigurator;component/#Audi Type Extended"/>
+
+            <!--Autó-->
+
+            <Image x:Name="autó" HorizontalAlignment="Left" Height="334" Margin="597,261,0,0" VerticalAlignment="Top" Width="715"/>
+
+            <Label x:Name="autónév" Content="empty" HorizontalAlignment="Left" Margin="10,66,0,0" VerticalAlignment="Top" FontSize="30" FontWeight="Bold" FontFamily="/AutoConfigurator;component/#Audi Type Extended" />
+
+            <Image Margin="184,559,1106,6" RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+                <Image.Source>
+                    <BitmapImage DecodePixelWidth="300" UriSource="nyil.png" />
+                </Image.Source>
+            </Image>
+
+            <Image Margin="23,559,1274,6" RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+                <Image.Source>
+                    <BitmapImage DecodePixelWidth="300" UriSource="ujra.png" />
+                </Image.Source>
+            </Image>
+
+
+
+            <Button x:Name="Tovább" Content="Mégsem" Click="TovábbMégsem_Click" HorizontalAlignment="Left" Margin="41,568,0,0"  VerticalAlignment="Top" Width="63" FontFamily="Lucida Sans Unicode" Background="White" Height="59" FontSize="35" Opacity="0"/>
+            <Button x:Name="Vissza" Content="Vissza" HorizontalAlignment="Left" VerticalAlignment="Top" Width="59" Margin="209,570,0,0" Height="59" FontFamily="Lucida Sans Unicode" FontSize="35" Background="White" Click="Vissza_Click" Opacity="0"/>
+            <Button x:Name="Kilépés" Content="Kilépés" HorizontalAlignment="Right" Margin="0,10,15,0" VerticalAlignment="Top" Width="46" Height="41" Opacity="0" Click="Kilépés_Click"/>
+            <Rectangle Fill="Black" HorizontalAlignment="Left" Height="5" Margin="-14,66,-3,0" Stroke="Black" VerticalAlignment="Top" Width="1415" RenderTransformOrigin="0.5,0.5">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Image x:Name="váltóKép" HorizontalAlignment="Left" Height="42" Margin="0,205,0,0" VerticalAlignment="Top" Width="42"/>
+            <Image x:Name="meghajtásKép" HorizontalAlignment="Left" Height="42" Margin="0,154,0,0" VerticalAlignment="Top" Width="42"/>
+            <Image x:Name="üzemanyagKép" HorizontalAlignment="Left" Height="42" Margin="0,260,0,0" VerticalAlignment="Top" Width="42"/>
+                <Image x:Name="motorKép" HorizontalAlignment="Left" Height="42" Margin="0,311,0,0" VerticalAlignment="Top" Width="42">
+                    <Image.Source>
+                        <BitmapImage DecodePixelWidth="200" UriSource="/KépekTechnika/dieselmotor.png" />
+                    </Image.Source>
+                </Image>
+
+
+
+
+        </Grid>
+    </Grid>
+</Window>

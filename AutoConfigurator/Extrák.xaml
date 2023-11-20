@@ -1,0 +1,200 @@
+﻿<Window x:Class="AutoConfigurator.Extrák"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutoConfigurator"
+        mc:Ignorable="d"
+        Title="Extrák" Height="650" Width="1400"  MaxWidth="1400" MaxHeight="650" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" Background="Transparent">
+    <WindowChrome.WindowChrome>
+        <WindowChrome GlassFrameThickness="0,0,0,1" CornerRadius="0" />
+    </WindowChrome.WindowChrome>
+    <Window.Clip>
+        <RectangleGeometry Rect="0,0,1400,650" RadiusX="25" RadiusY="25"/>
+    </Window.Clip>
+    <Window.Resources>
+
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="OptionMark.Static.Background" Color="#FFFFFFFF"/>
+        <SolidColorBrush x:Key="OptionMark.Static.Border" Color="#FF707070"/>
+        <Style x:Key="OptionMarkFocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="14,0,0,0" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="OptionMark.MouseOver.Background" Color="#FFF3F9FF"/>
+        <SolidColorBrush x:Key="OptionMark.MouseOver.Border" Color="#FF5593FF"/>
+        <SolidColorBrush x:Key="OptionMark.MouseOver.Glyph" Color="#FF212121"/>
+        <SolidColorBrush x:Key="OptionMark.Disabled.Background" Color="#FFE6E6E6"/>
+        <SolidColorBrush x:Key="OptionMark.Disabled.Border" Color="#FFBCBCBC"/>
+        <SolidColorBrush x:Key="OptionMark.Disabled.Glyph" Color="#FF707070"/>
+        <SolidColorBrush x:Key="OptionMark.Pressed.Background" Color="#FFD9ECFF"/>
+        <SolidColorBrush x:Key="OptionMark.Pressed.Border" Color="#FF3C77DD"/>
+        <SolidColorBrush x:Key="OptionMark.Pressed.Glyph" Color="#FF212121"/>
+        <SolidColorBrush x:Key="OptionMark.Static.Glyph" Color="#FF212121"/>
+        <Style TargetType="{x:Type CheckBox}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource OptionMark.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource OptionMark.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type CheckBox}">
+                        <Grid x:Name="templateRoot" Background="Transparent" SnapsToDevicePixels="True" Margin="0,0,67,8">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="31*"/>
+                                <ColumnDefinition Width="141*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border x:Name="checkBoxBorder" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="1,1,0,0" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Grid.ColumnSpan="3" Height="46" Width="49" >
+                                <Border.Effect>
+                                    <DropShadowEffect BlurRadius="5" ShadowDepth="2" />
+                                </Border.Effect>
+                                <Grid x:Name="markGrid">
+                                    <Path x:Name="optionMark" Data="M46.426801,4.6236264 L21.867416,34.387272 21.045183,34.387272 0,19.62817 5.9418977,13.310113 19.804154,23.010907 38.785935,5.7670795E-05 46.426801,4.6236264 z" Fill="{StaticResource OptionMark.Static.Glyph}" Margin="0,4.333,-78.666,-51.042" Opacity="0" Stretch="None" RenderTransformOrigin="0.305,0.369"/>
+                                    <Rectangle x:Name="indeterminateMark" Fill="{StaticResource OptionMark.Static.Glyph}" Margin="0,0,2,1" Opacity="0" RenderTransformOrigin="0.478,0.5"/>
+                                </Grid>
+                            </Border>
+                            <ContentPresenter x:Name="contentPresenter" Grid.Column="2" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="28.5,0,-638,0" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Width="750"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="HasContent" Value="true">
+                                <Setter Property="FocusVisualStyle" Value="{StaticResource OptionMarkFocusVisual}"/>
+                                <Setter Property="Padding" Value="4,-1,0,0"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="checkBoxBorder" Value="{StaticResource OptionMark.MouseOver.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="{StaticResource OptionMark.MouseOver.Border}"/>
+                                <Setter Property="Fill" TargetName="optionMark" Value="{StaticResource OptionMark.MouseOver.Glyph}"/>
+                                <Setter Property="Fill" TargetName="indeterminateMark" Value="{StaticResource OptionMark.MouseOver.Glyph}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="checkBoxBorder" Value="{StaticResource OptionMark.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="{StaticResource OptionMark.Disabled.Border}"/>
+                                <Setter Property="Fill" TargetName="optionMark" Value="{StaticResource OptionMark.Disabled.Glyph}"/>
+                                <Setter Property="Fill" TargetName="indeterminateMark" Value="{StaticResource OptionMark.Disabled.Glyph}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="checkBoxBorder" Value="{StaticResource OptionMark.Pressed.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="{StaticResource OptionMark.Pressed.Border}"/>
+                                <Setter Property="Fill" TargetName="optionMark" Value="{StaticResource OptionMark.Pressed.Glyph}"/>
+                                <Setter Property="Fill" TargetName="indeterminateMark" Value="{StaticResource OptionMark.Pressed.Glyph}"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="true">
+                                <Setter Property="Opacity" TargetName="optionMark" Value="1"/>
+                                <Setter Property="Opacity" TargetName="indeterminateMark" Value="0"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="{x:Null}">
+                                <Setter Property="Opacity" TargetName="optionMark" Value="0"/>
+                                <Setter Property="Opacity" TargetName="indeterminateMark" Value="1"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
+
+    <Grid Background="Silver" Margin="0,0,-8,-2">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="29*"/>
+            <RowDefinition Height="40*"/>
+        </Grid.RowDefinitions>
+        <Label HorizontalAlignment="Center" VerticalAlignment="Top" Height="112" Width="221" FontSize="44" Margin="628,10,559,0">
+            <TextBlock TextDecorations="Underline" FontFamily="/AutoConfigurator;component/#Audi Type Extended" FontWeight="Bold" FontSize="50" Width="235" Height="65">Extrák</TextBlock>
+        </Label>
+
+        <Image HorizontalAlignment="Right" Height="39"  VerticalAlignment="Top" Width="40" Margin="0,10,15,0">
+            <Image.Source>
+                <BitmapImage DecodePixelWidth="200" UriSource="close.png" />
+            </Image.Source>
+        </Image>
+        <Button x:Name="Kilépés" Content="Kilépés" HorizontalAlignment="Right"  VerticalAlignment="Top" Width="40" Height="39" Opacity="0" Click="Kilépés_Click" Margin="0,10,15,0"/>
+
+        <Image HorizontalAlignment="Left" Height="150" Margin="1196,239,-16,-11" VerticalAlignment="Top" Width="228" Grid.Row="1" >
+            <Image.Source>
+                <BitmapImage DecodePixelWidth="200" UriSource="audilogo.png" />
+            </Image.Source>
+        </Image>
+        <StackPanel Margin="0,106,530,135" Grid.RowSpan="2">
+
+
+            <CheckBox x:Name="Fényszórók" Content="Audi HD-Matrix LED-fényszórók" HorizontalAlignment="Left" Margin="73,0,0,0" VerticalAlignment="Top" Height="57" Width="238" FontSize="35" FontFamily="/AutoConfigurator;component/#Audi Type Extended" RenderTransformOrigin="0.5,0.5" Click="Kattintás_Click"/>
+
+            <CheckBox x:Name="Abroncsok" Content="Csomag: Abroncsok" HorizontalAlignment="Left" Margin="73,20,0,0" VerticalAlignment="Top" Height="56" Width="238" FontSize="35" FontFamily="/AutoConfigurator;component/#Audi Type Extended" Click="Kattintás_Click"/>
+
+            <CheckBox x:Name="Vonóhorog" Content="Vonóhorog előkészítés" HorizontalAlignment="Left" Margin="73,20,0,0" VerticalAlignment="Top" Height="58" Width="238" FontSize="35" FontFamily="/AutoConfigurator;component/#Audi Type Extended" Click="Kattintás_Click" />
+
+            <CheckBox x:Name="Fűtés" Content="Állóhelyzeti fűtés és szellőztetés" HorizontalAlignment="Left" Margin="73,20,0,0" VerticalAlignment="Top" Height="58" Width="238" FontSize="35" FontFamily="/AutoConfigurator;component/#Audi Type Extended" Click="Kattintás_Click"/>
+
+            <CheckBox x:Name="Üvegtető" Content="Tetőablak: Panoráma üvegtető" HorizontalAlignment="Left" Margin="73,20,0,0" VerticalAlignment="Top" Height="58" Width="238" FontSize="35" FontFamily="/AutoConfigurator;component/#Audi Type Extended" Click="Kattintás_Click"/>
+        </StackPanel>
+
+        <StackPanel Margin="0,332,1028,0" Background="White" Orientation="Horizontal" Grid.Row="1" Height="46" Width="380">
+            <Label Content="Végösszeg:" HorizontalAlignment="Left" VerticalAlignment="Top" Height="46" Width="170" FontFamily="/AutoConfigurator;component/#Audi Type Extended" FontSize="23"/>
+            <Label x:Name="végösszegki" HorizontalAlignment="Left" VerticalAlignment="Top" Height="46" Width="210" FontFamily="/AutoConfigurator;component/#Audi Type Extended" FontSize="23"/>
+        </StackPanel>
+
+
+
+        <StackPanel Margin="883,106,145,135" Grid.RowSpan="2">
+            <Label Content="822 960 Ft" HorizontalAlignment="Left" Margin="20,0,0,0" VerticalAlignment="Top" Height="66" Width="250" FontSize="35" FontFamily="/AutoConfigurator;component/#Audi Type Extended"/>
+
+            <Label Content="63 500 Ft" HorizontalAlignment="Left" Margin="20,10,0,0" VerticalAlignment="Top" Height="66" Width="250" FontSize="35" FontFamily="/AutoConfigurator;component/#Audi Type Extended" RenderTransformOrigin="0.5,1.636"/>
+
+            <Label Content="77 400 Ft" HorizontalAlignment="Left" Margin="20,10,0,0" VerticalAlignment="Top" Height="66" Width="250" FontSize="35" FontFamily="/AutoConfigurator;component/#Audi Type Extended"/>
+
+            <Label Content="642 620 Ft" HorizontalAlignment="Left" Margin="20,10,0,0" VerticalAlignment="Top" Height="66" Width="250" FontSize="35" FontFamily="/AutoConfigurator;component/#Audi Type Extended"/>
+
+            <Label Content="557 530 Ft" HorizontalAlignment="Left" Margin="20,10,0,0" VerticalAlignment="Top" Height="66" Width="250" FontSize="35" FontFamily="/AutoConfigurator;component/#Audi Type Extended"/>
+        </StackPanel>
+
+        <Image Margin="519,300,771,5" RenderTransformOrigin="0.5,0.5" Grid.Row="1">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+            <Image.Source>
+                <BitmapImage DecodePixelWidth="300" UriSource="nyil.png" />
+            </Image.Source>
+        </Image>
+        <Button x:Name="Vissza" Content="Vissza" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Margin="550,312,0,0" Height="56" FontFamily="Lucida Sans Unicode" FontSize="35" Background="White" Click="Vissza_Click" Opacity="0" Grid.Row="1"/>
+
+
+
+        <Image Margin="760,300,530,5" RenderTransformOrigin="0.5,0.5" Grid.Row="1">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+            <Image.Source>
+                <BitmapImage DecodePixelWidth="300" UriSource="nyil.png" />
+            </Image.Source>
+        </Image>
+
+        <Button x:Name="Szin" Content="Tovább a szín választáshoz" Click="TovábbSzin_Click" HorizontalAlignment="Left" Margin="791,312,0,0"  VerticalAlignment="Top" Width="58" FontFamily="Lucida Sans Unicode" Background="White" Height="56" Grid.Row="1" FontSize="35" Opacity="0"/>
+
+    </Grid>
+</Window>

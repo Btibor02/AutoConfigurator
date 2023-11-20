@@ -1,0 +1,84 @@
+﻿<Window x:Class="AutoConfigurator.Tipusok.R8tipus"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutoConfigurator"
+        mc:Ignorable="d"
+         Title="R8 Tipus" Height="650" Width="1400" MaxWidth="1400" MaxHeight="650" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" Background="Transparent">
+    <WindowChrome.WindowChrome>
+        <WindowChrome GlassFrameThickness="0,0,0,1" CornerRadius="0" />
+    </WindowChrome.WindowChrome>
+    <Window.Clip>
+        <RectangleGeometry Rect="0,0,1400,650" RadiusX="25" RadiusY="25"/>
+    </Window.Clip>
+    <Grid Margin="0,0,2,1" Background="Silver">
+        
+        
+        
+        <Label HorizontalAlignment="Center" VerticalAlignment="Top" Height="69" Width="243" FontSize="48" Margin="590,9,565,0" FontFamily="/AutoConfigurator;component/#Audi Type Extended" FontWeight="Bold" >
+            <TextBlock  Width="236">Audi R8</TextBlock>
+        </Label>
+
+        <Image HorizontalAlignment="Left" Height="150" Margin="1199,512,-29,-13" VerticalAlignment="Top" Width="228" >
+            <Image.Source>
+                <BitmapImage DecodePixelWidth="200" UriSource="../audilogo.png" />
+            </Image.Source>
+        </Image>
+
+        <Image HorizontalAlignment="Right" Height="39"  VerticalAlignment="Top" Width="40" Margin="0,10,15,0">
+            <Image.Source>
+                <BitmapImage DecodePixelWidth="200" UriSource="../close.png" />
+            </Image.Source>
+        </Image>
+        <Button x:Name="Kilépés" Content="Kilépés" HorizontalAlignment="Right"  VerticalAlignment="Top" Width="40" Height="39" Opacity="0" Click="Kilépés_Click" Margin="0,10,15,0"/>
+
+        <!--R8-->
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="256" Margin="171,124,0,0" VerticalAlignment="Top" Width="421" Background="PapayaWhip" >
+            <Label Content="R8" HorizontalAlignment="Center" FontSize="35" Margin="173,9,181,190" Width="65" FontFamily="/AutoConfigurator;component/#Audi Type Extended"/>
+        </Border>
+
+        <Image HorizontalAlignment="Left" Height="220" Margin="169,195,0,0" VerticalAlignment="Top" Width="423">
+            <Image.Source>
+                <BitmapImage DecodePixelWidth="300" UriSource=".\Képek\r8.png" />
+            </Image.Source>
+        </Image>
+
+        <Button x:Name="választr8" Content="Kiválaszt" Click="választr8_Click" Margin="169,124,806,269" RenderTransformOrigin="0.21,1.807" FontSize="35" FontFamily="Lucida Sans Unicode" Background="White" Opacity="0"/>
+        <Label Content="63 037 670 Ft" HorizontalAlignment="Left" Margin="218,325,0,0" VerticalAlignment="Top" Height="55" Width="314" FontSize="35" FontFamily="/AutoConfigurator;component/#Audi Type Extended"/>
+
+
+        <!--R8 Spyder-->
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="256" Margin="775,124,0,0" VerticalAlignment="Top" Width="421" Background="PapayaWhip" >
+            <Label Content="R8 Spyder" HorizontalAlignment="Center" FontSize="35" Margin="96,9,97,190" Width="226" FontFamily="/AutoConfigurator;component/#Audi Type Extended" RenderTransformOrigin="-0.447,0.656"/>
+        </Border>
+
+        <Image HorizontalAlignment="Left" Height="220" Margin="773,195,0,0" VerticalAlignment="Top" Width="423">
+            <Image.Source>
+                <BitmapImage DecodePixelWidth="300" UriSource=".\Képek\r8spyder.png" />
+            </Image.Source>
+        </Image>
+
+        <Button x:Name="választr8spyder" Content="Kiválaszt" Click="választr8spyder_Click" Margin="773,124,202,269" RenderTransformOrigin="0.21,1.807" FontSize="35" FontFamily="Lucida Sans Unicode" Background="White" Opacity="0"/>
+        <Label Content="68 370 400 Ft" HorizontalAlignment="Left" Margin="828,325,0,0" VerticalAlignment="Top" Height="55" Width="315" FontSize="35" FontFamily="/AutoConfigurator;component/#Audi Type Extended"/>
+
+        <Label Content="Válassza ki az Önnek tetsző típust!" HorizontalAlignment="Left" VerticalAlignment="Top" Height="62" Width="760" FontFamily="/AutoConfigurator;component/#Audi Type Extended" FontSize="36" Margin="320,436,0,0"/>
+        <Image Margin="31,534,1259,31" RenderTransformOrigin="0.5,0.5">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+            <Image.Source>
+                <BitmapImage DecodePixelWidth="300" UriSource="../nyil.png" />
+            </Image.Source>
+        </Image>
+        <Button x:Name="Vissza" HorizontalAlignment="Left" VerticalAlignment="Top" Width="56" Margin="58,551,0,0" Height="49" FontFamily="Lucida Sans Unicode" FontSize="35" Click="Vissza_Click" RenderTransformOrigin="0.5,0.5" Opacity="0"/>
+
+
+
+    </Grid>
+</Window>
